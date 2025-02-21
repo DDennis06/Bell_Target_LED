@@ -16,7 +16,7 @@ announcefile = "Sound_Files/announce_sound.mp3"
 
 # define given pins
 # to set your own pins enter the GPIO number in the list below
-ledpins = [4,"","","",""]
+ledpins = [4,5,23,25,""]
 maxcount = -1
 for pinumber in ledpins:
     # if pinnumber undefined  skip and stop defining
@@ -73,8 +73,14 @@ while program_running == True:
             # turn reset led on
             GPIO.output(resetledpin, 1)
             # play audio files
-            os.system("mpg321 " + dingfile)
-            #os.system("mpg123 " + announcefile)
+            try:
+                os.system("mpg321 " + dingfile)
+            except: 
+                print("Audio File Not Found")
+            try:
+                os.system("mpg123 " + announcefile)
+            except:
+                print("Audio File Not Found")
             count += 1
             # checks if all the led's are on, if so prevents user from attempting to turn more on
             if count > maxcount:
