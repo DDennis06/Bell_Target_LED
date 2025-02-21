@@ -10,5 +10,4 @@ This a small python script that utilises the Raspberry PI GPIO pins to light up 
 
 ``` 
 sudo apt-get -y install mpg321
-
 ```
