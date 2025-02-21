@@ -3,14 +3,19 @@ import os
 # import GPIO and Sleep libraries
 import RPi.GPIO as GPIO
 from time import sleep
-#' setup the GPIO system
+# setup the GPIO system
 GPIO.setmode(GPIO.BCM)
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname) 
+
 # define path to audio file
-dingfile = "/home/ross/Desktop/bell_sound.mp3"
-announcefile = ""
+dingfile = "Sound_Files/bell_sound.mp3"
+announcefile = "Sound_Files/announce_sound.mp3"
 
 # define given pins
+# to set your own pins enter the GPIO number in the list below
 ledpins = [4,"","","",""]
 maxcount = -1
 for pinumber in ledpins:
@@ -22,6 +27,7 @@ for pinumber in ledpins:
         GPIO.setup(pinumber, GPIO.OUT)
         maxcount += 1    
 
+# to set your own pin numbers replace the numbers below with your own
 onpin = 17 # set led on button pin
 offpin = 27 # define led off button pin
 resetledpin = 13 # defines the pin for the reset led
@@ -90,8 +96,4 @@ while program_running == True:
             print("turnedoff")
             turnoff(ledpins)
             count = 0
-            allturnedon = False
-            
-
-
-
+            allturnedon = False 
