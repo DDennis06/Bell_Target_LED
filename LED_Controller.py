@@ -16,7 +16,7 @@ announcefile = "Sound_Files/announce_sound.mp3"
 
 # define given pins
 # to set your own pins enter the GPIO number in the list below
-ledpins = [4,5,23,25,""]
+ledpins = [4,5,23,25,24]
 maxcount = -1
 for pinumber in ledpins:
     # if pinnumber undefined  skip and stop defining
@@ -31,6 +31,8 @@ for pinumber in ledpins:
 onpin = 17 # set led on button pin
 offpin = 27 # define led off button pin
 resetledpin = 13 # defines the pin for the reset led
+activeledpin = 6 # defines the pin for the active led
+GPIO.setup(activeledpin, GPIO.OUT)
 GPIO.setup(resetledpin, GPIO.OUT)
 GPIO.setup(offpin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(onpin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # with pull up resistor
@@ -70,7 +72,8 @@ while program_running == True:
             print(count)
             # turn bell light on
             turnon(ledpins[count])
-            # turn reset led on
+            # turn reset led on and active led off
+            GPIO.output(activeledpin, 0)
             GPIO.output(resetledpin, 1)
             # play audio files
             try:
@@ -87,7 +90,9 @@ while program_running == True:
                 allturnedon = True
             # sleep prevetns one input being registered as many
             sleep(4)
+            # turns reset led off and active led on
             GPIO.output(resetledpin, 0)
+            GPIO.output(activeledpin, 1)
         # if the off button is pressed, all leds turned off and count reset
         if GPIO.input(offpin) == 0:
             turnoff(ledpins)
