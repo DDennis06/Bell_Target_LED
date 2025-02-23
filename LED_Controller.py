@@ -16,7 +16,7 @@ announcefile = "Sound_Files/announce_sound.mp3"
 
 # define given pins
 # to set your own pins enter the GPIO number in the list below
-ledpins = [4,5,23,25,24]
+ledpins = [4,5,23,6,26]
 maxcount = -1
 for pinumber in ledpins:
     # if pinnumber undefined  skip and stop defining
@@ -29,9 +29,9 @@ for pinumber in ledpins:
 
 # to set your own pin numbers replace the numbers below with your own
 onpin = 17 # set led on button pin
-offpin = 27 # define led off button pin
-resetledpin = 13 # defines the pin for the reset led
-activeledpin = 6 # defines the pin for the active led
+offpin = 22 # define led off button pin
+resetledpin = 27 # defines the pin for the reset led
+activeledpin = 25 # defines the pin for the active led
 GPIO.setup(activeledpin, GPIO.OUT)
 GPIO.setup(resetledpin, GPIO.OUT)
 GPIO.setup(offpin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -62,6 +62,8 @@ allturnedon = False
 program_running  = True
 # turns off any leds that were left on
 turnoff(ledpins)
+
+GPIO.output(activeledpin, 1)
 
 # main loop for program
 while program_running == True:
