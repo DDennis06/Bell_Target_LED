@@ -15,8 +15,8 @@ sudo apt-get -y install mpg321
 
 The script has default pin numbers for certain components set they are as follows:
 
-<p>Pins 4,5,23,25 and 24 are set to be the LED's that light up when a BELL is scored</p>
-<p>Pin 13 is set to be the LED that lights up while the program registers a BELL</p>
-<p>Pin 6 is set to be the LED that lights up when the program starts and only turns off while the LED on Pin 13 is on</p>
+<p>Pins 4,5,23,6 and 26 are set to be the LED's that light up when a BELL is scored</p>
+<p>Pin 27 is set to be the LED that lights up while the program registers a BELL</p>
+<p>Pin 25 is set to be the LED that lights up when the program starts and only turns off while the LED on Pin 27 is on</p>
 <p>Pin 17 is set to be the button that turns on the LED's</p>
-<p>Pin 27 is set to be the button that resets the LED's</p>
+<p>Pin 22 is set to be the button that resets the LED's</p>
